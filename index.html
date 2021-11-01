@@ -4,30 +4,52 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
     <title>Document</title>
     <script src="./build/"></script>
   </head>
   <body>
-    <div class="wraap">
+    <div class="wrap">
       <section class="nav">
         <div class="logo">MYNOTE</div>
         <ul class="types">
-          <li class="type">유튜브 영상</li>
           <li class="type">글</li>
+          <li class="type">유튜브 영상</li>
           <li class="type">사이트</li>
           <li class="type">음악</li>
         </ul>
       </section>
+
       <section class="container">
-        <ul class="items">
-          <li class="item" data-type="video">
-            <span class="title"></span>
-            <div class="content"></div>
-          </li>
-          <li class="item" data-type="essay"></li>
-          <li class="item" data-type="site-link"></li>
-          <li class="item" data-type="music"></li>
-        </ul>
+        <div class="container-items">
+          <ul class="items">
+            <li class="item" data-type="essay">
+              <span class="title">이것은 글 컨텐츠 입니다.</span>
+            </li>
+            <li class="item" data-type="video">
+              <span class="title">이것은 영상 제목 입니다.</span>
+              <div class="content">영상 컨텐츠 입니다.</div>
+            </li>
+            <li class="item" data-type="site-link">
+              이것은 사이트 임베드 입니다.
+            </li>
+            <li class="item" data-type="music">음악 저장소 입니다.</li>
+          </ul>
+        </div>
+        <div class="container-modal">
+          <div class="modal active" id="">
+            <form action="">
+              <span>제목</span><input type="text" />
+              <span>내용</span><input type="text" />
+              <div class="modal_bottom">
+                <button>게시</button>
+              </div>
+            </form>
+          </div>
+          <div class="modal" id="">asdf</div>
+          <div class="modal" id="">asdf</div>
+          <div class="modal" id="">asdf</div>
+        </div>
       </section>
     </div>
   </body>
