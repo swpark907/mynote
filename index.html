@@ -24,33 +24,38 @@
         <div class="container-items">
           <ul class="items">
             <li class="item" data-type="essay">
-              <span class="title">이것은 글 컨텐츠 입니다.</span>
+              <span class="title">글 컨텐츠 입니다.</span>
             </li>
             <li class="item" data-type="video">
-              <span class="title">이것은 영상 제목 입니다.</span>
+              <span class="title">영상 제목 입니다.</span>
               <div class="content">영상 컨텐츠 입니다.</div>
             </li>
             <li class="item" data-type="site-link">
-              이것은 사이트 임베드 입니다.
+              사이트 임베드 입니다.
             </li>
             <li class="item" data-type="music">음악 저장소 입니다.</li>
           </ul>
         </div>
-        <div class="container-modal">
-          <div class="modal active" id="">
-            <form action="">
-              <span>제목</span><input type="text" />
-              <span>내용</span><input type="text" />
-              <div class="modal_bottom">
-                <button>게시</button>
-              </div>
-            </form>
-          </div>
-          <div class="modal" id="">asdf</div>
-          <div class="modal" id="">asdf</div>
-          <div class="modal" id="">asdf</div>
-        </div>
+        
       </section>
     </div>
+    <section class="modals">
+      <div class="modal_container">
+        <div class="modal active" id="">
+          <span class='modal_title'>글</span>
+          <form action="">
+            <span>제목</span><input type="text" />
+            <span>내용</span><input type="text" />
+            <div class="modal_bottom">
+              <button id='post'>게시</button>
+              <button id='cancel'>취소</button>
+            </div>
+          </form>
+        </div>
+        <div class="modal" id="">asdf</div>
+        <div class="modal" id="">asdf</div>
+        <div class="modal" id="">asdf</div>
+    </div>
+    </section>
   </body>
 </html>
