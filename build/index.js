@@ -19,6 +19,22 @@ var essayHandler = /** @class */ (function () {
     }
     essayHandler.prototype.addItem = function (item) {
         // addedItems[item.type].push(item);
+        var newItem = document.createElement('li');
+        newItem.setAttribute('class', 'item');
+        var title = document.createElement('span');
+        title.setAttribute('class', 'item-title');
+        title.innerText = item.title;
+        var content = document.createElement('span');
+        content.setAttribute('class', 'item-content');
+        content.setAttribute('data-type', item.type);
+        content.innerText = item.content;
+        var date = document.createElement('span');
+        date.setAttribute('class', 'item-date');
+        // date.innerText = item.date;
+        newItem.appendChild(title);
+        newItem.appendChild(content);
+        var itemsList = document.querySelector('.items');
+        itemsList === null || itemsList === void 0 ? void 0 : itemsList.appendChild(newItem);
     };
     essayHandler.prototype.updateItem = function () {
     };
@@ -32,4 +48,11 @@ var modals = document.querySelector('.modals');
 console.log(selectBox, post);
 post === null || post === void 0 ? void 0 : post.addEventListener('click', function (e) {
     console.log(selectBox.selectedOptions[0].label);
+});
+var handler = new essayHandler();
+handler.addItem({
+    type: 'essay',
+    id: 1,
+    title: 'title',
+    content: 'content',
 });

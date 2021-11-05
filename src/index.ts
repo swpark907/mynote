@@ -15,7 +15,7 @@ type Item = {
   id: number;
   title: string;
   content: string;
-  date: Date;
+  date?: Date;
 }
 
 interface ItemHandler  {
@@ -38,6 +38,28 @@ class essayHandler implements ItemHandler {
 
   addItem(item: Item): void {
     // addedItems[item.type].push(item);
+    let newItem = document.createElement('li');
+    newItem.setAttribute('class', 'item');
+    
+    let title = document.createElement('span');
+    title.setAttribute('class', 'item-title');    
+    title.innerText = item.title;
+
+    let content = document.createElement('span');
+    content.setAttribute('class', 'item-content');
+    content.setAttribute('data-type', item.type);
+    content.innerText = item.content;
+
+    let date = document.createElement('span');
+    date.setAttribute('class', 'item-date');
+    // date.innerText = item.date;
+
+    newItem.appendChild(title);
+    newItem.appendChild(content);
+
+    let itemsList = document.querySelector('.items');
+    itemsList?.appendChild(newItem);
+
   }
 
   updateItem(): void {
@@ -57,4 +79,12 @@ console.log(selectBox, post)
 
 post?.addEventListener('click', (e) => {  
   console.log(selectBox.selectedOptions[0].label); 
+})
+
+const handler = new essayHandler();
+handler.addItem({
+  type: 'essay',
+  id: 1,
+  title: 'title',
+  content: 'content',  
 })
