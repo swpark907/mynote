@@ -21,7 +21,7 @@ type Item = {
 interface ItemHandler  {
   addItem(item: Item): void,
   updateItem(item: Item): void,
-  deleteItem(): void,  
+  deleteItem(item: HTMLElement): void,  
 }
 
 const addedItems = {
@@ -40,7 +40,8 @@ class essayHandler implements ItemHandler {
     // addedItems[item.type].push(item);
     let newItem = document.createElement('li');
     newItem.setAttribute('class', 'item');
-    
+    newItem.setAttribute('id', `${item.id}`);
+
     let title = document.createElement('span');
     title.setAttribute('class', 'item-title');    
     title.innerText = item.title;
@@ -57,16 +58,38 @@ class essayHandler implements ItemHandler {
     newItem.appendChild(title);
     newItem.appendChild(content);
 
+
+  
+    let itemBottom = document.createElement('div');
+    itemBottom.setAttribute('class', 'item-bottom');
+    let delBtn = document.createElement('button')
+    delBtn.setAttribute('class', 'item-delete');
+    delBtn.setAttribute('value', '삭제');
+    let updateBtn = document.createElement('button')
+    updateBtn.setAttribute('class', 'item-update');
+    updateBtn.setAttribute('value', '수정');
+
+    itemBottom.append(delBtn, updateBtn);
+    newItem.appendChild(itemBottom);    
+
     let itemsList = document.querySelector('.items');
     itemsList?.appendChild(newItem);
 
   }
 
-  updateItem(): void {
+  updateItem(item: Item): void {
+    // 버튼을 누르면 item이 전달됨
+    // 전달된 아이템의 요소를 모달창에 띄움
+    // 모달창에서 수정을 완료한후 게시버튼을 누르면
+    // 동일한 id의 element가 바뀌어야함
+
 
   }
 
-  deleteItem(): void{
+  deleteItem(item: HTMLElement): void{
+    
+    item.parentElement?.parentElement?.remove();
+    // 모달창을 통해 확인하는 작업 만들어야 함
 
   }  
 }
@@ -74,6 +97,19 @@ class essayHandler implements ItemHandler {
 const selectBox = document.querySelector('#selectBox') as HTMLSelectElement;
 const post = document.querySelector('.post') as HTMLButtonElement;
 const modals = document.querySelector('.modals');
+const deleteBtn = document.querySelectorAll('.item-delete');
+const items = document.querySelector('.items') as HTMLElement;
+
+const handler = new essayHandler();
+
+items?.addEventListener('click', (e: Event) => {
+  if(e.target.className === 'item-delete'){
+    handler.deleteItem(e.target);
+  } 
+})
+
+
+
 
 console.log(selectBox, post)
 
@@ -81,10 +117,10 @@ post?.addEventListener('click', (e) => {
   console.log(selectBox.selectedOptions[0].label); 
 })
 
-const handler = new essayHandler();
+
 handler.addItem({
   type: 'essay',
   id: 1,
-  title: 'title',
-  content: 'content',  
+  title: '동적으로 받아온 제목',
+  content: '동적으로 받아온 내용',
 })
