@@ -5,6 +5,7 @@
 // 글 내용을 입력하고 게시 버튼을 누르면 
 // li item을 생성하고 
 // title, content를 내용에 맞게 생성 후 display --> none;
+Object.defineProperty(exports, "__esModule", { value: true });
 // item 생성하는 class를 만든 후
 // 타입에 맞게 method 추가
 console.log('js loaded');
@@ -60,23 +61,4 @@ var essayHandler = /** @class */ (function () {
     };
     return essayHandler;
 }());
-var selectBox = document.querySelector('#selectBox');
-var post = document.querySelector('.post');
-var modals = document.querySelector('.modals');
-var deleteBtn = document.querySelectorAll('.item-delete');
-var items = document.querySelector('.items');
-var testHandler = new essayHandler();
-items === null || items === void 0 ? void 0 : items.addEventListener('click', function (e) {
-    if (e.target.className === 'item-delete') {
-        testHandler.deleteItem(e.target);
-    }
-});
-post === null || post === void 0 ? void 0 : post.addEventListener('click', function (e) {
-    console.log(selectBox.selectedOptions[0].label);
-});
-testHandler.addItem({
-    type: 'essay',
-    id: 1,
-    title: '동적으로 받아온 제목',
-    content: '동적으로 받아온 내용',
-});
+exports.default = essayHandler;

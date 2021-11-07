@@ -91,6 +91,10 @@ section{
   margin-top: var(--gap-normal);
 }
 
+.items .item .item-bottom .item-delete{
+  margin-right: 0.5rem;
+}
+
 .modals{
   display: none;
   position: absolute;
@@ -118,6 +122,7 @@ section{
 }
 .modal{
   display: none;
+  width: 70%;
 }
 .modal .modal_title{
   font-size: var(--font-title);
@@ -126,6 +131,7 @@ section{
 .modal form{
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 .modal .modal_bottom{
   display: flex;
@@ -134,14 +140,14 @@ section{
 }
 .modal input{
   padding: var(--gap-narrow);
+  width: 100%;
 }
 .modal button{
   margin-right: var(--gap-normal);  
   padding: var(--gap-narrow);
   border: 1px solid var(--color-light-grey);
   border-radius: 8px;
-  outline: none;
-  background-color: rgb(250, 207, 211);
+  outline: none;  
   transition: all 200ms linear;
 }
 

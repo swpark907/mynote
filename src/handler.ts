@@ -31,7 +31,7 @@ const addedItems = {
   music: [],
 };
 
-class essayHandler implements ItemHandler {
+export default class essayHandler implements ItemHandler {
   constructor(){
     
   }
@@ -64,10 +64,10 @@ class essayHandler implements ItemHandler {
     itemBottom.setAttribute('class', 'item-bottom');
     let delBtn = document.createElement('button')
     delBtn.setAttribute('class', 'item-delete');
-    delBtn.setAttribute('value', '삭제');
+    delBtn.textContent = '삭제'
     let updateBtn = document.createElement('button')
     updateBtn.setAttribute('class', 'item-update');
-    updateBtn.setAttribute('value', '수정');
+    updateBtn.textContent = '수정'
 
     itemBottom.append(delBtn, updateBtn);
     newItem.appendChild(itemBottom);    
@@ -94,33 +94,3 @@ class essayHandler implements ItemHandler {
   }  
 }
 
-const selectBox = document.querySelector('#selectBox') as HTMLSelectElement;
-const post = document.querySelector('.post') as HTMLButtonElement;
-const modals = document.querySelector('.modals');
-const deleteBtn = document.querySelectorAll('.item-delete');
-const items = document.querySelector('.items') as HTMLElement;
-
-const handler = new essayHandler();
-
-items?.addEventListener('click', (e: Event) => {
-  if(e.target.className === 'item-delete'){
-    handler.deleteItem(e.target);
-  } 
-})
-
-
-
-
-console.log(selectBox, post)
-
-post?.addEventListener('click', (e) => {  
-  console.log(selectBox.selectedOptions[0].label); 
-})
-
-
-handler.addItem({
-  type: 'essay',
-  id: 1,
-  title: '동적으로 받아온 제목',
-  content: '동적으로 받아온 내용',
-})
