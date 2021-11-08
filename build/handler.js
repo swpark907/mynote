@@ -1,11 +1,9 @@
-"use strict";
 // 글 생성
 // 버튼을 누르면 모달창 display --> block
 // 취소버튼이나 바깥부분을 누르면 display --> none
 // 글 내용을 입력하고 게시 버튼을 누르면 
 // li item을 생성하고 
 // title, content를 내용에 맞게 생성 후 display --> none;
-Object.defineProperty(exports, "__esModule", { value: true });
 // item 생성하는 class를 만든 후
 // 타입에 맞게 method 추가
 console.log('js loaded');
@@ -61,4 +59,4 @@ var essayHandler = /** @class */ (function () {
     };
     return essayHandler;
 }());
-exports.default = essayHandler;
+export default essayHandler;
