@@ -9,6 +9,9 @@ const items = document.querySelector('.items') as HTMLElement;
 
 const testHandler = new essayHandler();
 
+type Type = 'essay' | 'youtube' | 'siteLink' | 'music';
+let currentType: Type;
+
 items?.addEventListener('click', (e: Event) => {
   if(e.target.className === 'item-delete'){
     testHandler.deleteItem(e.target);
@@ -17,15 +20,20 @@ items?.addEventListener('click', (e: Event) => {
 
 openPost?.addEventListener('click', (e) => {  
   console.log(selectBox.selectedOptions[0].label, 'asdf');
-  const contentType: string = selectBox.selectedOptions[0].label;
+  const contentType: Type = selectBox.selectedOptions[0].value as Type;
   modal.forEach(modal => {
-    if(contentType === modal.id){
-      modal.classList.add('active');      
+    if(contentType === '종류선택'){
+      return;
+    } else if(contentType === modal.id){
+      modal.classList.add('active');   
+      modals.style.display = 'block'
+      currentType = contentType;   
     } else{
       modal.classList.remove('active')
+      modals.style.display = 'block'
+      currentType = contentType;
     }
   })
-  modals.style.display = 'block'
 })
 
 modals.addEventListener('click', (e) => {
@@ -36,10 +44,18 @@ modals.addEventListener('click', (e) => {
     e.preventDefault();
     modals.style.display = 'none';
 
-    // 게시 버튼을 누르면 input의 내용이 html에 적히는 기능
+    testHandler.addItem({
+      type: currentType,
+      id: new Date().getTime(),
+      title: '모달을 통해 받아온 제목',
+      content: '모달을 통해 받아온 내용',
+      date: new Date(),
+    })
     
   }
 })
+
+// console.log(new Date().getTime());
 
 
 

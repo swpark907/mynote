@@ -21,12 +21,12 @@ var essayHandler = /** @class */ (function () {
         var newItem = document.createElement('li');
         newItem.setAttribute('class', 'item');
         newItem.setAttribute('id', "" + item.id);
+        newItem.setAttribute('data-type', item.type);
         var title = document.createElement('span');
         title.setAttribute('class', 'item-title');
         title.innerText = item.title;
         var content = document.createElement('span');
         content.setAttribute('class', 'item-content');
-        content.setAttribute('data-type', item.type);
         content.innerText = item.content;
         var date = document.createElement('span');
         date.setAttribute('class', 'item-date');

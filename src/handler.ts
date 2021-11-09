@@ -41,14 +41,14 @@ export default class essayHandler implements ItemHandler {
     let newItem = document.createElement('li');
     newItem.setAttribute('class', 'item');
     newItem.setAttribute('id', `${item.id}`);
+    newItem.setAttribute('data-type', item.type);
 
     let title = document.createElement('span');
     title.setAttribute('class', 'item-title');    
     title.innerText = item.title;
 
     let content = document.createElement('span');
-    content.setAttribute('class', 'item-content');
-    content.setAttribute('data-type', item.type);
+    content.setAttribute('class', 'item-content');    
     content.innerText = item.content;
 
     let date = document.createElement('span');
