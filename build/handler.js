@@ -30,9 +30,10 @@ var essayHandler = /** @class */ (function () {
         content.innerText = item.content;
         var date = document.createElement('span');
         date.setAttribute('class', 'item-date');
-        // date.innerText = item.date;
+        date.innerHTML = "" + item.date;
         newItem.appendChild(title);
         newItem.appendChild(content);
+        newItem.appendChild(date);
         var itemBottom = document.createElement('div');
         itemBottom.setAttribute('class', 'item-bottom');
         var delBtn = document.createElement('button');

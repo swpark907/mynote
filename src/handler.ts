@@ -11,11 +11,11 @@
 console.log('js loaded')
 
 type Item = {
-  type: 'essay' | 'youtube' | 'siteLink' | 'music';
+  type: 'essay' | 'youtube' | 'siteLink' | 'music' | 'default';
   id: number;
   title: string;
   content: string;
-  date?: Date;
+  date?: Date | string;
 }
 
 interface ItemHandler  {
@@ -53,10 +53,11 @@ export default class essayHandler implements ItemHandler {
 
     let date = document.createElement('span');
     date.setAttribute('class', 'item-date');
-    // date.innerText = item.date;
+    date.innerHTML = `${item.date}`;
 
     newItem.appendChild(title);
     newItem.appendChild(content);
+    newItem.appendChild(date)
 
 
   
