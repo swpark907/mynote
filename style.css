@@ -124,9 +124,18 @@ section{
   display: none;
   width: 70%;
 }
+.modal .modal_errorMsg{
+  display: none;
+  text-align: center;
+  color: red;
+  margin-bottom: var(--gap-narrow);
+}
+.modal .modal_errorMsg .active{
+  display: block;
+}
 .modal .modal_title{
   font-size: var(--font-title);
-  margin-bottom: var(--gap-normal);
+  margin-bottom: var(--gap-narrow);
 }
 .modal form{
   display: flex;
