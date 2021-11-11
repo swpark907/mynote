@@ -7,10 +7,14 @@ var modalTitle = document.querySelector(".modal_title");
 var modalErrorMsg = document.querySelector(".modal_errorMsg");
 var deleteBtn = document.querySelectorAll(".item-delete");
 var items = document.querySelector(".items");
+var item = document.querySelectorAll('.item');
 var inputTitle = document.querySelector(".input-title");
 var inputDesc = document.querySelector(".input-desc");
+var navTypes = document.querySelector('.nav-types');
+var navType = document.querySelectorAll('.nav-type');
 var testHandler = new essayHandler();
 var currentType;
+var displayType;
 var dateTransform = function (date, symbol) {
     var year = date.getFullYear();
     var month = date.getMonth() + 1;
@@ -65,10 +69,18 @@ modals.addEventListener("click", function (e) {
         inputDesc.value = "";
     }
 });
-// testHandler.addItem({
-//   type: 'essay',
-//   id: 1,
-//   title: '동적으로 받아온 제목',
-//   content: '동적으로 받아온 내용',
-//   date: dateTransform(new Date(), '-')
-// })
+navTypes.addEventListener('click', function (e) {
+    var target = e.target;
+    displayType = target.dataset.type;
+    item.forEach(function (i) {
+        if (displayType === 'all') {
+            i.style.display = 'flex';
+        }
+        else if (i.dataset.type === displayType) {
+            i.style.display = 'flex';
+        }
+        else {
+            i.style.display = 'none';
+        }
+    });
+});

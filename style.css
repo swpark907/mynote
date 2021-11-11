@@ -31,11 +31,17 @@ ul li{
   flex-direction: column;
 }
 
-.nav .types{
+.nav .nav-types{
 }
 
-.nav .types .type{
+.nav .nav-types .nav-type{
   cursor: pointer;
+  transition: all 150ms linear;
+}
+
+.nav .nav-types .nav-type:hover{
+  font-weight: bold;
+  transform: scale(1.02);
 }
 
 body{

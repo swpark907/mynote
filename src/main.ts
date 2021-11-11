@@ -8,13 +8,17 @@ const modalTitle = document.querySelector(".modal_title") as HTMLElement;
 const modalErrorMsg = document.querySelector(".modal_errorMsg") as HTMLSpanElement;
 const deleteBtn = document.querySelectorAll(".item-delete");
 const items = document.querySelector(".items") as HTMLDivElement;
+const item = document.querySelectorAll<HTMLLIElement>('.item') ;
 const inputTitle = document.querySelector(".input-title") as HTMLInputElement;
 const inputDesc = document.querySelector(".input-desc") as HTMLInputElement;
+const navTypes = document.querySelector('.nav-types') as HTMLUListElement;
+const navType = document.querySelectorAll<HTMLLIElement>('.nav-type');
 
 const testHandler = new essayHandler();
 
 type Type = "essay" | "youtube" | "siteLink" | "music" | "default";
 let currentType: Type;
+let displayType: Type | 'all';
 
 const dateTransform = (date: Date, symbol: string): string => {
   const year = date.getFullYear();
@@ -76,10 +80,16 @@ modals.addEventListener("click", (e: Event) => {
   }
 });
 
-// testHandler.addItem({
-//   type: 'essay',
-//   id: 1,
-//   title: '동적으로 받아온 제목',
-//   content: '동적으로 받아온 내용',
-//   date: dateTransform(new Date(), '-')
-// })
+navTypes.addEventListener('click', (e:Event) => { // filtering items
+  const target = e.target as HTMLElement
+  displayType = target.dataset.type as Type | 'all';
+  item.forEach(i => {
+    if(displayType === 'all'){
+      i.style.display = 'flex'
+    } else if(i.dataset.type === displayType){
+      i.style.display = 'flex';
+    } else {
+      i.style.display = 'none';
+    }
+  })
+})
