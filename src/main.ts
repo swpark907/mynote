@@ -20,6 +20,10 @@ type Type = "essay" | "youtube" | "siteLink" | "music" | "default";
 let currentType: Type;
 let displayType: Type | 'all';
 
+const addedItems = {
+  
+};
+
 const dateTransform = (date: Date, symbol: string): string => {
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
@@ -32,6 +36,9 @@ items?.addEventListener("click", (e: Event) => {
   const target = e.target as HTMLDivElement;
   if (target.className === "item-delete") {
     testHandler.deleteItem(target);
+  } else if(target.className === 'item-update'){
+    const type = target.dataset.type;
+    testHandler.updateItem(addedItems[target.id]);
   }
 });
 
@@ -52,7 +59,7 @@ openPost?.addEventListener("click", (e) => {
 });
 
 modals.addEventListener("click", (e: Event) => {
-  const target = e.target as HTMLDivElement;
+  const target = e.target as HTMLDivElement;  
   if (target.className === "modals" || target.className === "cancel") {
     e.preventDefault();
     modals.style.display = "none";
@@ -61,22 +68,24 @@ modals.addEventListener("click", (e: Event) => {
     modalErrorMsg.style.display = "none";
   } else if (target.className === "post") {
     e.preventDefault();
-    if (inputTitle.value == "" || inputDesc.value == "") {
-      modalErrorMsg.style.display = "block";
+    if (inputTitle.value == "" || inputDesc.value == "") {  
+      modalErrorMsg.style.display = "block";  
+      
     } else {      
       modals.style.display = "none";
-      testHandler.addItem({
+      const addedItem = {
         type: currentType,
         id: new Date().getTime(),
         title: inputTitle.value,
         content: inputDesc.value,
         date: dateTransform(new Date(), "-"),
-      });
+      }
+      testHandler.addItem(addedItem);
+      addedItems[currentType][addedItem.id] = addedItem;  
       modalErrorMsg.style.display = "none";
+      inputTitle.value = "";
+      inputDesc.value = "";
     }
-    
-    inputTitle.value = "";
-    inputDesc.value = "";
   }
 });
 

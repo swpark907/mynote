@@ -24,12 +24,12 @@ interface ItemHandler  {
   deleteItem(item: HTMLElement): void,  
 }
 
-const addedItems = {
-  essay:[],
-  youtube:[],
-  siteLink: [],
-  music: [],
-};
+// const addedItems = {
+//   essay:[],
+//   youtube:[],
+//   siteLink: [],
+//   music: [],
+// };
 
 export default class essayHandler implements ItemHandler {
   constructor(){

@@ -7,12 +7,12 @@
 // item 생성하는 class를 만든 후
 // 타입에 맞게 method 추가
 console.log('js loaded');
-var addedItems = {
-    essay: [],
-    youtube: [],
-    siteLink: [],
-    music: [],
-};
+// const addedItems = {
+//   essay:[],
+//   youtube:[],
+//   siteLink: [],
+//   music: [],
+// };
 var essayHandler = /** @class */ (function () {
     function essayHandler() {
     }

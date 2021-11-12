@@ -15,6 +15,7 @@ var navType = document.querySelectorAll('.nav-type');
 var testHandler = new essayHandler();
 var currentType;
 var displayType;
+var addedItems = {};
 var dateTransform = function (date, symbol) {
     var year = date.getFullYear();
     var month = date.getMonth() + 1;
@@ -25,6 +26,10 @@ items === null || items === void 0 ? void 0 : items.addEventListener("click", fu
     var target = e.target;
     if (target.className === "item-delete") {
         testHandler.deleteItem(target);
+    }
+    else if (target.className === 'item-update') {
+        var type = target.dataset.type;
+        testHandler.updateItem(addedItems[target.id]);
     }
 });
 openPost === null || openPost === void 0 ? void 0 : openPost.addEventListener("click", function (e) {
@@ -56,17 +61,19 @@ modals.addEventListener("click", function (e) {
         }
         else {
             modals.style.display = "none";
-            testHandler.addItem({
+            var addedItem = {
                 type: currentType,
                 id: new Date().getTime(),
                 title: inputTitle.value,
                 content: inputDesc.value,
                 date: dateTransform(new Date(), "-"),
-            });
+            };
+            testHandler.addItem(addedItem);
+            addedItems[currentType][addedItem.id] = addedItem;
             modalErrorMsg.style.display = "none";
+            inputTitle.value = "";
+            inputDesc.value = "";
         }
-        inputTitle.value = "";
-        inputDesc.value = "";
     }
 });
 navTypes.addEventListener('click', function (e) {
