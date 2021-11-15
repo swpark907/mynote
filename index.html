@@ -10,7 +10,7 @@
   <body>
     <div class="wrap">
       <section class="nav">
-        <div class="logo">MYNOTE</div>
+        <h1 class="logo">MYNOTE</h1>
         <ul class="nav-types">
           <li class="nav-type" data-type='all'>전체보기</li>
           <li class="nav-type" data-type='essay'>글</li>
@@ -26,59 +26,39 @@
             <option value="default">종류선택</option>
             <option value="essay">글</option>
             <option value="youtube">유튜브</option>
-            <option value="site-link">사이트링크</option>
-            <option value="music">음악</option>
+            <option value="site-link">사이트링크</option>            
+            <option value="image">사진</option>
           </select>
           <button class="open-post">메모 남기기</button>
         </div>
         <div class="container-items">
           <ul class="items">
-            <li class="item" data-type="essay">
-              <span class="item-title">글 제목</span>
-              <span class="item-content">글 내용</span>
-              <span class="item-date">작성일</span>
-              <div class="item-bottom">
-                <button class="item-delete">삭제</button>
-                <button class="item-update">수정</button>
-              </div>
-            </li>
-            <li class="item" data-type="video">
-              <div class="video">영상 임베드</div>
-              <span class="item-content">영상 제목 입니다.</span>
-              <span class="item-date">작성일</span>
-              <div class="item-bottom">
-                <button class="item-delete">삭제</button>
-                <button class="item-update">수정</button>
-              </div>
-            </li>
-            <li class="item" data-type="site-link">
-              사이트 임베드 입니다.
-              <div class="item-bottom">
-                <button class="item-delete">삭제</button>
-                <button class="item-update">수정</button>
-              </div>
-            </li>
-            <li class="item" data-type="music">
-              음악 플레이어 입니다.
-              <div class="item-bottom">
-                <button class="item-delete">삭제</button>
-                <button class="item-update">수정</button>
-              </div>
-            </li>
           </ul>
         </div>
       </section>
     </div>
     <section class="modals">
       <div class="modal_container">
-        <div class="modal active" id="essay">
-          <span class="modal_title">글</span>
-          <form action="">
+        <div class="modal active" id="modal__essay">
+          <p class="modal_title">글</p>
+          <form class='modal__essayform'>
             <span class="modal_errorMsg">최소 한글자 이상 작성해야 합니다.</span>
             <span>제목</span>
             <input class='input-title' type="text"/>
             <span>내용</span>
             <input class='input-desc' type="text" />
+            <div class="modal_bottom">
+              <button class="post">게시</button>
+              <button class="cancel">취소</button>
+            </div>
+          </form>
+        </div>
+        <div class="modal" id="modal__url">
+          <p class="modal_title">유튜브</p>
+          <form class='modal__urlform'>
+            <span class="modal_errorMsg">최소 한글자 이상 작성해야 합니다.</span>
+            <span>제목</span>
+            <input class='input-title' type="text"/>
             <span>URL</span>
             <input class='input-url' type="text" />
             <div class="modal_bottom">
@@ -86,9 +66,14 @@
               <button class="cancel">취소</button>
             </div>
           </form>
-        </div>        
+        </div>    
       </div>
     </section>
     <script type="module" src="./build/main.js"></script>
   </body>
 </html>
+
+<li class='item'>
+  <div class="image__holder"><img class='image__thumbnail'></div>
+  <div class="item__title"></div>
+</li>
