@@ -13,6 +13,7 @@ export class ImageComponent {
     const imageTitle = this.element.querySelector('.item-title')! as HTMLSpanElement;
     const imageDate = this.element.querySelector('.item-date')! as HTMLSpanElement;
     const date = new Date();
+    this.element.id = date.getTime().toString();
     imageElement.src = url;
     imageElement.alt = title;
     imageTitle.textContent = title;

@@ -12,11 +12,11 @@ export class EssayComponent {
     const essayTitle = this.element.querySelector('.item-title')! as HTMLSpanElement;
     const essayContent = this.element.querySelector('.item-content')! as HTMLSpanElement;
     const essayDate = this.element.querySelector('.item-date')! as HTMLSpanElement;
-    // const date = new Date();
-    this.element.id = new Date().getTime().toString();   
+    const date = new Date();
+    this.element.id = date.getTime().toString();   
     essayTitle.textContent = title;
     essayContent.textContent = essay;
-    essayDate.textContent = this.dateTransform(new Date(), '-');
+    essayDate.textContent = this.dateTransform(date, '-');
   }
 
   private dateTransform= (date: Date, symbol: string): string => {
