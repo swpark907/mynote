@@ -13,12 +13,14 @@ const modalErrorMsg =
 const deleteBtn = document.querySelectorAll(".item-delete");
 const items = document.querySelector(".items") as HTMLDivElement;
 const item = document.querySelectorAll<HTMLLIElement>(".item");
-const inputTitle = document.querySelector(".input-title") as HTMLInputElement;
-const inputDesc = document.querySelector(".input-desc") as HTMLInputElement;
 const navTypes = document.querySelector(".nav-types") as HTMLUListElement;
 const navType = document.querySelectorAll<HTMLLIElement>(".nav-type");
 const modalEssay = document.querySelector("#modal__essay") as HTMLDivElement;
 const modalUrl = document.querySelector("#modal__url") as HTMLDivElement;
+const essayTitle = modalEssay.querySelector(".input-title") as HTMLInputElement;
+const essayDesc = modalEssay.querySelector(".input-desc") as HTMLInputElement;
+const urlTitle = modalUrl.querySelector('.input-title') as HTMLInputElement;
+const urlSrc = modalUrl.querySelector('.input-url') as HTMLInputElement;
 
 const testHandler = new essayHandler();
 
@@ -80,7 +82,7 @@ function modalInit() {
     ".input-title"
   ) as HTMLInputElement;
   const urlInputDesc = modalUrl.querySelector(
-    ".input-desc"
+    ".input-url"
   ) as HTMLInputElement;
   essayInputTitle.value = "";
   essayInputDesc.value = "";
@@ -94,46 +96,51 @@ function modalInit() {
 modals.addEventListener("click", (e: Event) => {
   const target = e.target as HTMLDivElement;
 
-  // 모달창 추가로 인한 inputTitle, inputDesc가 두개인 이슈 처리
-  // 타입에 따른 케이스 구분 요망
-
   if (target.className === "modals" || target.className === "cancel") {
     e.preventDefault();
     modals.style.display = "none";
     modalInit();
   } else if (target.className === "post") {
     e.preventDefault();
-    if (inputTitle.value == "" || inputDesc.value == "") {
-      // input 공백 시 에러 메시지 처리
-      modalErrorMsg.forEach((m) => {
-        m.style.display = "block";
-      });
-      return;
-    } else {
-      modals.style.display = "none";
-      switch (currentType) {
-        case "essay":
-          const essayComponent = new EssayComponent(
-            inputTitle.value,
-            inputDesc.value
-          );
+    switch (currentType) {
+      case "essay":
+        if(essayTitle.value == '' || essayDesc.value == ''){
+          modalErrorMsg.forEach(m => {
+            m.style.display = 'block'
+          })
+          return;
+        } else {
+          const essayComponent = new EssayComponent(essayTitle.value,essayDesc.value);
           essayComponent.attachTo(items, "afterbegin");
-          break;
-        case "image":
-          const imageComponent = new ImageComponent('title', 'url');
-          imageComponent.attachTo(items, 'afterbegin');
-          break;
-        case "youtube":
-          const youtubeComponent = new YoutubeComponent('title', 'url');
-          youtubeComponent.attachTo(items, 'afterbegin');
-          break;
-        case "siteLink":
-
-
+        }        
+        break;
+      case "image":
+        if(urlTitle.value == '' || urlSrc.value == ''){
+          modalErrorMsg.forEach(m => {
+            m.style.display = 'block'
+          })
+          return;
+        }
+        const imageComponent = new ImageComponent(urlTitle.value, urlSrc.value);
+        imageComponent.attachTo(items, 'afterbegin');
+        break;
+      case "youtube":
+        // urlSrc 변환 장치 요망
+        if(urlTitle.value == '' || urlSrc.value == ''){
+          modalErrorMsg.forEach(m => {
+            m.style.display = 'block'
+          })
+          return;
+        }
+        const youtubeComponent = new YoutubeComponent(urlTitle.value, urlSrc.value);
+        youtubeComponent.attachTo(items, 'afterbegin');
+        break;
+      case "siteLink":
       }
+      modals.style.display = "none";
+      modalInit();
     }
-    modalInit();
-  }
+    
 });
 
 navTypes.addEventListener("click", (e: Event) => {
