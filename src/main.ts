@@ -2,6 +2,7 @@ import { YoutubeComponent } from './youtube.js';
 import { ImageComponent } from './image.js';
 import { EssayComponent } from "./essay.js";
 import essayHandler from "./handler.js";
+import { BaseComponent } from './base.js';
 
 const selectBox = document.querySelector("#selectBox") as HTMLSelectElement;
 const openPost = document.querySelector(".open-post") as HTMLButtonElement;
@@ -10,9 +11,7 @@ const modal = document.querySelectorAll<HTMLDivElement>(".modal");
 const modalTitle = document.querySelector(".modal_title") as HTMLElement;
 const modalErrorMsg =
   document.querySelectorAll<HTMLSpanElement>(".modal_errorMsg");
-const deleteBtn = document.querySelectorAll(".item-delete");
 const items = document.querySelector(".items") as HTMLDivElement;
-const item = document.querySelectorAll<HTMLLIElement>(".item");
 const navTypes = document.querySelector(".nav-types") as HTMLUListElement;
 const navType = document.querySelectorAll<HTMLLIElement>(".nav-type");
 const modalEssay = document.querySelector("#modal__essay") as HTMLDivElement;
@@ -38,7 +37,7 @@ const dateTransform = (date: Date, symbol: string): string => {
 
 items?.addEventListener("click", (e: Event) => {
   const target = e.target as HTMLDivElement;
-  if (target.className === "item-delete") {
+  if (target.className === "item-bottom__delete") {
     testHandler.deleteItem(target);
   } else if (target.className === "item-update") {
     // const type = target.dataset.type;
@@ -144,8 +143,9 @@ modals.addEventListener("click", (e: Event) => {
 });
 
 navTypes.addEventListener("click", (e: Event) => {
+  const item = items.querySelectorAll('.item')
   // filtering items
-  const target = e.target as HTMLElement;
+  const target = e.target as HTMLElement;  
   displayType = target.dataset.type as Type | "all";
   item.forEach((i) => {
     if (displayType === "all") {

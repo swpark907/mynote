@@ -1,4 +1,4 @@
-export class PageComponent {
+export class PageComponent {  
   private element: HTMLUListElement;
   constructor(){
     this.element = document.createElement('ul');
@@ -9,5 +9,6 @@ export class PageComponent {
   attachTo(parent: HTMLElement, position: InsertPosition = 'afterbegin'){
     parent.insertAdjacentElement(position, this.element);
   }
+  
 }
 

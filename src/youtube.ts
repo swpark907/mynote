@@ -1,14 +1,16 @@
-export class YoutubeComponent {
-  private element: HTMLElement;
+import { BaseComponent } from "./base.js";
+
+export class YoutubeComponent extends BaseComponent<HTMLLIElement>{
+
   constructor(title: string, url: string){
-    const template = document.createElement('template');
-    template.innerHTML = `<li class="item" id='' data-type="youtube">
-    <span class="item-title"></span>
+    super(`<li class="item" id='' data-type="youtube">
+    <h2 class="item-title"></h2>
     <iframe class="item-media" width='280px' height='210px'></iframe>
     <span class="item-date"></span>
-  </li>`;
+    <button class="item-bottom__delete">삭제</button>
+    <button class="item-bottom__update">수정</button>
+  </li>`)
 
-    this.element = template.content.firstElementChild! as HTMLLIElement;
     const youtubeTitle = this.element.querySelector('.item-title')! as HTMLSpanElement;
     const youtubeContent = this.element.querySelector('.item-media')! as HTMLIFrameElement;
     const youtubeDate = this.element.querySelector('.item-date')! as HTMLSpanElement;
@@ -17,17 +19,5 @@ export class YoutubeComponent {
     youtubeTitle.textContent = title;    
     youtubeContent.src = url;
     youtubeDate.textContent = this.dateTransform(date, '-');
-  }
-
-  private dateTransform= (date: Date, symbol: string): string => {
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-  
-    return `${year}${symbol}${month}${symbol}${day}`;
-  }
-
-  attachTo(parent: HTMLElement, position: InsertPosition = "afterbegin") {
-    parent.insertAdjacentElement(position, this.element);
   }
 }

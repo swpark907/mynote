@@ -88,6 +88,10 @@ section{
   margin-top: var(--gap-narrow);
 }
 
+.items .item .item-title{
+  font-size: var(--font-large);
+}
+
 .items .item .item-date{
   font-size: var(--font-medium);
   margin-top: var(--gap-narrow);
@@ -97,7 +101,7 @@ section{
   margin-top: var(--gap-normal);
 }
 
-.items .item .item-bottom .item-delete{
+.items .item .item-bottom .item-bottom__delete{
   margin-right: 0.5rem;
 }
 

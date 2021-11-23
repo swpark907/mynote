@@ -1,14 +1,15 @@
-export class ImageComponent {
-  private element: HTMLElement;
-  constructor(title: string, url: string){
-    const template = document.createElement('template');
-    template.innerHTML = `<li class='item' data-type='image'>
-    <div class="image__holder"><img class='image__thumbnail'></div>
-    <span class="item-title"></span>
-    <span class="item-date"></span>
-  </li>`;
+import { BaseComponent } from "./base.js";
 
-    this.element = template.content.firstElementChild! as HTMLElement;
+export class ImageComponent extends BaseComponent<HTMLLIElement>{
+  
+  constructor(title: string, url: string){
+    super(`<li class='item' data-type='image'>
+    <div class="image__holder"><img class='image__thumbnail'></div>
+    <h2 class="item-title"></h2>
+    <span class="item-date"></span>
+    <button class="item-bottom__delete">삭제</button>
+    <button class="item-bottom__update">수정</button>
+  </li>`)
     const imageElement = this.element.querySelector('.image__thumbnail')! as HTMLImageElement;
     const imageTitle = this.element.querySelector('.item-title')! as HTMLSpanElement;
     const imageDate = this.element.querySelector('.item-date')! as HTMLSpanElement;
@@ -18,17 +19,5 @@ export class ImageComponent {
     imageElement.alt = title;
     imageTitle.textContent = title;
     imageDate.textContent = this.dateTransform(date, '-');
-  }
-
-  private dateTransform= (date: Date, symbol: string): string => {
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-  
-    return `${year}${symbol}${month}${symbol}${day}`;
-  }
-
-  attachTo(parent: HTMLElement, position: InsertPosition = 'afterbegin'){
-    parent.insertAdjacentElement(position, this.element);
   }
 }

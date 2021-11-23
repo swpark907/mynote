@@ -1,14 +1,15 @@
-export class EssayComponent {
-  private element: HTMLElement;
+import { BaseComponent } from "./base.js";
+
+export class EssayComponent extends BaseComponent<HTMLLIElement> {
   constructor(title: string, essay: string) {
-    const template = document.createElement("template");
-    template.innerHTML = `<li class="item" data-type="essay" id=''>
-    <span class="item-title"></span>
+    super(`<li class="item" data-type="essay" id=''>
+    <h2 class="item-title"></h2>
     <span class="item-content"></span>
     <span class="item-date"></span>
-  </li>`;
-
-    this.element = template.content.firstElementChild! as HTMLElement;    
+    <div class="item-bottom">
+    <button class="item-bottom__delete">삭제</button>
+    <button class="item-bottom__update">수정</button>
+  </li>`)
     const essayTitle = this.element.querySelector('.item-title')! as HTMLSpanElement;
     const essayContent = this.element.querySelector('.item-content')! as HTMLSpanElement;
     const essayDate = this.element.querySelector('.item-date')! as HTMLSpanElement;
@@ -18,17 +19,4 @@ export class EssayComponent {
     essayContent.textContent = essay;
     essayDate.textContent = this.dateTransform(date, '-');
   }
-
-  private dateTransform= (date: Date, symbol: string): string => {
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-  
-    return `${year}${symbol}${month}${symbol}${day}`;
-  }
-
-  attachTo(parent: HTMLElement, position: InsertPosition = "afterbegin") {
-    parent.insertAdjacentElement(position, this.element);
-  }
-
 }
