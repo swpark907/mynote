@@ -2,18 +2,15 @@ import { YoutubeComponent } from './youtube.js';
 import { ImageComponent } from './image.js';
 import { EssayComponent } from "./essay.js";
 import essayHandler from "./handler.js";
-import { BaseComponent } from './base.js';
 
 const selectBox = document.querySelector("#selectBox") as HTMLSelectElement;
 const openPost = document.querySelector(".open-post") as HTMLButtonElement;
 const modals = document.querySelector(".modals") as HTMLDivElement;
 const modal = document.querySelectorAll<HTMLDivElement>(".modal");
-const modalTitle = document.querySelector(".modal_title") as HTMLElement;
 const modalErrorMsg =
   document.querySelectorAll<HTMLSpanElement>(".modal_errorMsg");
 const items = document.querySelector(".items") as HTMLDivElement;
 const navTypes = document.querySelector(".nav-types") as HTMLUListElement;
-const navType = document.querySelectorAll<HTMLLIElement>(".nav-type");
 const modalEssay = document.querySelector("#modal__essay") as HTMLDivElement;
 const modalUrl = document.querySelector("#modal__url") as HTMLDivElement;
 const essayTitle = modalEssay.querySelector(".input-title") as HTMLInputElement;
@@ -27,14 +24,6 @@ type Type = "essay" | "youtube" | "siteLink" | "image" | "default";
 let currentType: Type;
 let displayType: Type | "all";
 
-const dateTransform = (date: Date, symbol: string): string => {
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
-
-  return `${year}${symbol}${month}${symbol}${day}`;
-};
-
 items?.addEventListener("click", (e: Event) => {
   const target = e.target as HTMLDivElement;
   if (target.className === "item-bottom__delete") {
@@ -45,7 +34,7 @@ items?.addEventListener("click", (e: Event) => {
   }
 });
 
-openPost?.addEventListener("click", (e) => {
+openPost?.addEventListener("click", () => {
   const option = selectBox.selectedOptions[0] as HTMLOptionElement;
   const contentType: Type = option.value as Type;
 
@@ -143,14 +132,14 @@ modals.addEventListener("click", (e: Event) => {
 });
 
 navTypes.addEventListener("click", (e: Event) => {
-  const item = items.querySelectorAll('.item')
+  const item = items.querySelectorAll<HTMLElement>('.item');
   // filtering items
   const target = e.target as HTMLElement;  
-  displayType = target.dataset.type as Type | "all";
+  displayType = target.dataset['type'] as Type | "all";
   item.forEach((i) => {
     if (displayType === "all") {
       i.style.display = "flex";
-    } else if (i.dataset.type === displayType) {
+    } else if (i.dataset['type'] === displayType) {
       i.style.display = "flex";
     } else {
       i.style.display = "none";

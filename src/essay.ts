@@ -7,8 +7,10 @@ export class EssayComponent extends BaseComponent<HTMLLIElement> {
     <span class="item-content"></span>
     <span class="item-date"></span>
     <div class="item-bottom">
+    <div class='item-bottom'>
     <button class="item-bottom__delete">삭제</button>
     <button class="item-bottom__update">수정</button>
+    </div>
   </li>`)
     const essayTitle = this.element.querySelector('.item-title')! as HTMLSpanElement;
     const essayContent = this.element.querySelector('.item-content')! as HTMLSpanElement;

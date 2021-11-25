@@ -7,8 +7,10 @@ export class ImageComponent extends BaseComponent<HTMLLIElement>{
     <div class="image__holder"><img class='image__thumbnail'></div>
     <h2 class="item-title"></h2>
     <span class="item-date"></span>
+    <div class='item-bottom'>
     <button class="item-bottom__delete">삭제</button>
     <button class="item-bottom__update">수정</button>
+    </div>
   </li>`)
     const imageElement = this.element.querySelector('.image__thumbnail')! as HTMLImageElement;
     const imageTitle = this.element.querySelector('.item-title')! as HTMLSpanElement;

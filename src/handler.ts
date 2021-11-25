@@ -69,12 +69,8 @@ export default class essayHandler implements ItemHandler {
 
   }
 
-  updateItem(item: Item): void {
-    // 버튼을 누르면 item이 전달됨
-    // 전달된 아이템의 요소를 모달창에 띄움
-    // 모달창에서 수정을 완료한후 게시버튼을 누르면
-    // 동일한 id의 element가 바뀌어야함
-    const itemList = document.querySelector(`${item.id}`)
+  updateItem(): void {
+    
     
 
   }
