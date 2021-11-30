@@ -1,3 +1,4 @@
+import { UrlComponent } from './url.js';
 import { YoutubeComponent } from './youtube.js';
 import { ImageComponent } from './image.js';
 import { EssayComponent } from "./essay.js";
@@ -146,3 +147,6 @@ navTypes.addEventListener("click", (e: Event) => {
     }
   });
 });
+
+const urlcomp = new UrlComponent('title','asdf')
+urlcomp.getMetadata('url');
