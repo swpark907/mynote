@@ -21,7 +21,7 @@ const urlSrc = modalUrl.querySelector('.input-url') as HTMLInputElement;
 
 const testHandler = new essayHandler();
 
-type Type = "essay" | "youtube" | "siteLink" | "image" | "default";
+type Type = "essay" | "youtube" | "site-link" | "image" | "default";
 let currentType: Type;
 let displayType: Type | "all";
 
@@ -53,6 +53,7 @@ openPost?.addEventListener("click", () => {
     modals.style.display = "block";
   }
   currentType = contentType;
+  console.log(currentType)
 });
 
 function modalInit() {
@@ -124,7 +125,16 @@ modals.addEventListener("click", (e: Event) => {
         const youtubeComponent = new YoutubeComponent(urlTitle.value, urlSrc.value);
         youtubeComponent.attachTo(items, 'afterbegin');
         break;
-      case "siteLink":
+      case "site-link":
+        if(urlTitle.value == '' || urlSrc.value == ''){
+          modalErrorMsg.forEach(m => {
+            m.style.display = 'block'
+          })
+          return;
+        }
+        const urlComponenet = new UrlComponent(urlTitle.value, urlSrc.value);
+        urlComponenet.attachTo(items, 'beforeend');
+        break;
       }
       modals.style.display = "none";
       modalInit();
@@ -147,6 +157,3 @@ navTypes.addEventListener("click", (e: Event) => {
     }
   });
 });
-
-const urlcomp = new UrlComponent('title','asdf')
-urlcomp.getMetadata('url');

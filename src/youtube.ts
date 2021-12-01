@@ -4,14 +4,14 @@ export class YoutubeComponent extends BaseComponent<HTMLLIElement>{
 
   constructor(title: string, url: string){
     super(`<li class="item" id='' data-type="youtube">
-    <h2 class="item-title"></h2>
-    <iframe class="item-media" width='280px' height='210px'></iframe>
-    <span class="item-date"></span>
-    <div class='item-bottom'>
-    <button class="item-bottom__delete">삭제</button>
-    <button class="item-bottom__update">수정</button>
-    </div>
-  </li>`)
+      <h2 class="item-title"></h2>
+      <iframe class="item-media" width='280px' height='210px'></iframe>
+      <span class="item-date"></span>
+      <div class='item-bottom'>
+      <button class="item-bottom__delete">삭제</button>
+      <button class="item-bottom__update">수정</button>
+      </div>
+    </li>`)
 
     const youtubeTitle = this.element.querySelector('.item-title')! as HTMLSpanElement;
     const youtubeContent = this.element.querySelector('.item-media')! as HTMLIFrameElement;
