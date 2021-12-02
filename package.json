@@ -1,0 +1,26 @@
+{
+  "name": "mynote",
+  "version": "1.0.0",
+  "description": "",
+  "type": "commonjs",
+  "main": "main.js",
+  "dependencies": {
+    "@types/node": "^16.11.11",
+    "url-metadata": "^2.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swpark907/mynote.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/swpark907/mynote/issues"
+  },
+  "homepage": "https://github.com/swpark907/mynote#readme"
+}
