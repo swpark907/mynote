@@ -6,7 +6,6 @@ export class EssayComponent extends BaseComponent<HTMLLIElement> {
     <h2 class="item-title"></h2>
     <span class="item-content"></span>
     <span class="item-date"></span>
-    <div class="item-bottom">
     <div class='item-bottom'>
     <button class="item-bottom__delete">삭제</button>
     <button class="item-bottom__update">수정</button>

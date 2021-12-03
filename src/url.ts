@@ -13,12 +13,16 @@ export class UrlComponent extends BaseComponent<HTMLElement>{
         </div>                
         <img src='#' class="item__site-link__thumbnail"></img>
       </div>
+      <div class='item-bottom'>
+    <button class="item-bottom__delete">삭제</button>
+    <button class="item-bottom__update">수정</button>
+    </div>
     </li>`)
 
     const itemTitle = this.element.querySelector('.item-title')! as HTMLDivElement;
     // const siteTitle = this.element.querySelector('.item__site-link__title')! as HTMLDivElement;
     // const siteDesc = this.element.querySelector('.item__site-link__desc')! as HTMLDivElement;
-    const siteThumbnail = this.element.querySelector('.item__site-link__thumbnail') as HTMLImageElement;
+    // const siteThumbnail = this.element.querySelector('.item__site-link__thumbnail') as HTMLImageElement;
     const siteUrl = this.element.querySelector('.item__site-link__url')! as HTMLDivElement
 
     // const metaData = this.getMetadata(url);
