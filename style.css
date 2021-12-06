@@ -4,6 +4,7 @@
   --color-light-grey: #e5e5e5;
   --color-light-pink: #fde6e2;
   --color-peach: rgb(245, 214, 196);
+  --color-hotpink: #ff8a80;
 
   /* Font Size */
   --font-title: 24px;
@@ -31,15 +32,33 @@ ul li{
   flex-direction: column;
 }
 
+.nav{
+  position: fixed;
+  background-color: var(--color-light-pink);
+  width: 300px;
+  height: 100vh;
+  /* padding: 2rem; */
+}
+
 .nav .nav-types{
 }
 
 .nav .nav-types .nav-type{
   cursor: pointer;
   transition: all 150ms linear;
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 2px;
 }
 
 .nav .nav-types .nav-type:hover{
+  font-weight: bold;
+  transform: scale(1.02);
+  background-color: var(--color-hotpink);
+}
+
+.nav .nav-type.active{
+  background-color: var(--color-hotpink);
   font-weight: bold;
   transform: scale(1.02);
 }
@@ -56,14 +75,6 @@ body{
 
 section{
   padding: var(--gap-wide);
-}
-
-.nav{
-  position: fixed;
-  background-color: var(--color-light-pink);
-  width: 300px;
-  height: 100vh;
-  /* padding: 2rem; */
 }
 
 .nav .logo{
@@ -229,6 +240,8 @@ section{
 .modals .cover{
   position: relative;
 }
+
+
 
 @media screen and (max-width: 768px){
   .items .item .item__site-link .item__site-link__thumbnail{

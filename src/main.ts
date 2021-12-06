@@ -145,7 +145,14 @@ modals.addEventListener("click", (e: Event) => {
 navTypes.addEventListener("click", (e: Event) => {
   const item = items.querySelectorAll<HTMLElement>('.item');
   // filtering items
-  const target = e.target as HTMLElement;  
+  const target = e.target as HTMLElement;
+
+  const navType = document.querySelectorAll<HTMLLIElement>('.nav-type');
+  navType.forEach(type => {
+    type.classList.remove('active');
+  })
+  target.classList.add('active');
+
   displayType = target.dataset['type'] as Type | "all";
   item.forEach((i) => {
     if (displayType === "all") {
@@ -157,3 +164,4 @@ navTypes.addEventListener("click", (e: Event) => {
     }
   });
 });
+
